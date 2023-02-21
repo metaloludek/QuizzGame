@@ -7,8 +7,10 @@ class Program
 {
     static void Main()
     {
+        Console.WriteLine("Podaj pelna sciezke do pliku questions.xlsx");
+        string filePath = Console.ReadLine();
        
-        var workbook = new XLWorkbook("\\bin\\Questions.xlsx");
+        var workbook = new XLWorkbook(filePath);
         var worksheet = workbook.Worksheet("Arkusz1");
         var questions = new List<Question>();
 
@@ -31,6 +33,7 @@ class Program
         questions = questions.OrderBy(q => random.Next()).ToList();
 
         // Start 
+        Console.Clear();
         Console.WriteLine("Witam w Quiz! Lewa Strzalka - odpowiedz A, prawa strzalka - odpowiedz B.");
         Console.WriteLine("Gra konczy się pierwszym bledem lub wyczerpaniem puli pytan. Powodzenia!\n");
         Console.ReadKey();
